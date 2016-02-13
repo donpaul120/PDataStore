@@ -1,4 +1,3 @@
-
 var pStore = new PDataStore();
 
 
@@ -15,12 +14,12 @@ describe('PDataStore', function(){
     describe('#findDataByKey', function(){
         it('should return an empty array if the data source doesnt exist -- ', function(){
             var result = pStore.findDataByKeyValue('s', 'b', 'data-source-no-exist').result;
-            assert([].length === result.length, 'the result is not empty');
+            assert(0 === result.length, 'the result is not empty');
         });
     });
 
     describe('#findDataByKey on a Wrong Data Source Format', function(){
-        it('should throw Error if the data source format isn;t in a json or url format-- ', function(){
+        it('should throw Error if the data source value isn;t in a json or url format-- ', function(){
             var result;
             try{
                result = pStore.findDataByKeyValue('k', 'v', 'data-wrong-format');

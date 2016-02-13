@@ -36,6 +36,7 @@ PDataStore Implementation
 We will use PDataStore to load the list of books to an HTMLSelectElement
 
 ```javascript
+    var PDataStore = require('pdatastore');
     function Books(){
         var pStore = new PDataStore();
         //so we are looking for all books in data-source-books whose authors name is equals paul
@@ -54,9 +55,22 @@ We will use PDataStore to load the list of books to an HTMLSelectElement
 
 We can also Load all Data Source At Once into Memory.
 ```javascript
+    var PDataStore = require('pdatastore');
     function Books(){
         //initialize PDataStore and pass a boolean to its contructor.
         //This will automatically load all data to memory on page load
         var pStore = new PDataStore(true);
     }
 ```
+
+
+
+## Installation
+npm install pdatastore
+
+
+## Tests
+open the file pdatastoretest.html in your browser
+
+## License
+MIT
