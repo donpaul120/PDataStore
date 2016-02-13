@@ -2,7 +2,6 @@
 var pStore = new PDataStore();
 
 
-
 describe('PDataStore', function(){
 
     describe('#retrieveData', function(){
