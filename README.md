@@ -72,7 +72,7 @@ function Books(){
     
     var pStore = new PDataStore();
     //lets loads all data into memory.. 
-    pStore.ssynchronizeData();
+    pStore.synchronizeData();
 }
 ```
 
