@@ -67,6 +67,12 @@ function Books(){
     //initialize PDataStore and pass a boolean to its contructor.
     //This will automatically load all data to memory on page load
     var pStore = new PDataStore(true);
+    
+    //or
+    
+    var pStore = new PDataStore();
+    //lets loads all data into memory.. 
+    pStore.ssynchronizeData();
 }
 ```
 
