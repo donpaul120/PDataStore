@@ -1,7 +1,7 @@
 # PDataStore
 
 #Synopsis
-PDataStore retrieves data from a data-source in html, saves the data into memory and provides quick access to this data.
+PDataStore retrieves data from a data-source in an HTMLElement, saves the data into memory and provides quick access to this data.
 You can therefore also convert stored data to certain HTMLElements e.g HTMLSelectElement options
 
 
@@ -97,10 +97,10 @@ var pStore = new PDataStore(true);
 var category = document.getElementsByName('product_cat')[0];
 if(category!==null && category!==undefined){
     category.addEventListener('change', function(){
-        var value = this.options[this.selectedIndex].value;
-        pStore.findDataByKeyValue('product_category_id', value, 'data-source-products')
+        var value = category.options[category.selectedIndex].value;
+        this.pStore.findDataByKeyValue('product_category_id', value, 'data-source-products')
             .toHtmlList('id', 'product_name', 'product_cat', '14');
-    });
+    }.bind(this));
 }
 ```
 
