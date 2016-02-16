@@ -26,7 +26,9 @@ Inject data-sources to the store like this:
      }]'>
 </div>
 ```
-Note:: PDataStore loads data from its sources, saves it into memory and removes loaded data-sources from the p-store.
+Note:: PDataStore loads data from its sources, saves it into memory and removes loaded data-sources from **p-store**.
+
+You can as well pass the url to where PDataStore will fetch the data as the data-source value
 
 ```html
 <!--Inject the data: blade templates-->
@@ -40,7 +42,6 @@ We will use PDataStore to load the list of books to a HTMLSelectElement
 ```javascript
 var PDataStore = require('pdatastore');
 function Books(){
-    var PDataStore = require('pdatastore');
     var pStore = new PDataStore();
     //so we are looking for all books in data-source-books 
     //whose authors name is equals paul
@@ -59,6 +60,7 @@ function Books(){
 ```
 
 We can also Load all Data Source At Once into Memory.
+We advice you to use this mostly when your data-source contains url to fetch the data.
 ```javascript
 var PDataStore = require('pdatastore');
 function Books(){
@@ -97,10 +99,16 @@ var pStore = new PDataStore(true);
 var category = document.getElementsByName('product_cat')[0];
 if(category!==null && category!==undefined){
     category.addEventListener('change', function(){
-        var value = category.options[category.selectedIndex].value;
-        this.pStore.findDataByKeyValue('product_category_id', value, 'data-source-products')
+        var value = this.options[this.selectedIndex].value;
+        pStore.findDataByKeyValue('product_category_id', value, 'data-source-products')
             .toHtmlList('id', 'product_name', 'product_cat', '14');
-    }.bind(this));
+    });
+    
+//JQuery Developers
+$('input[name=product_cat]').change(function(){
+    pStore.findDataByKeyValue('product_category_id', $(this).va(), 'data-source-products')
+            .toHtmlList('id', 'product_name', 'product_cat', '14');
+});
 }
 ```
 
