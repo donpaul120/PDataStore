@@ -128,7 +128,7 @@ npm install pdatastore
 
 
 ## Tests
-open the file pdatastoretest.html in your browser
+open the file **pdatastoretest.html** in your browser
 
 ## License
 MIT
