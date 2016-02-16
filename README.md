@@ -23,7 +23,7 @@ An Example Using PHP(Laravel) and Blade Template:
 ```php
     function __construct(BooksInterface $books){
         //You can as well pass the url for PDataStore to fetch the books
-        $this->data['book_source'] = route('get.all.books');
+        $this->data['book_source_url'] = route('get.all.books');
     }
 
     function getHomePageWithBooks(Request $request){
@@ -34,7 +34,8 @@ An Example Using PHP(Laravel) and Blade Template:
 
 ```html
     <!--Inject the data-->
-    <div id=p-store data-source-books='{{$books}}' data-book-route='{{book_source}}'></div>
+    <div id=p-store data-source-books='{{$books}}' 
+            data-book-route='{{book_source_url}}'></div>
 ```
 
 PDataStore Implementation
@@ -44,7 +45,8 @@ We will use PDataStore to load the list of books to an HTMLSelectElement
     var PDataStore = require('pdatastore');
     function Books(){
         var pStore = new PDataStore();
-        //so we are looking for all books in data-source-books whose authors name is equals paul
+        //so we are looking for all books in data-source-books 
+        //whose authors name is equals paul
         var result = pStore.findDataByKeyValue('authors_name', 'paul', 'data-source-books').result;
         
         /**you can as well load the data into an htmlSelectElement.
@@ -54,7 +56,8 @@ We will use PDataStore to load the list of books to an HTMLSelectElement
          *  books : The input name of HTMLSelectElement
          *  2 : The default value of the HTMLOption
          **/
-        pStore.findDataByKeyValue('authors_name', 'paul', 'data-books').toHtmlList('id', 'authors_name', 'books', '2');
+        pStore.findDataByKeyValue('authors_name', 'paul', 'data-books')
+                    .toHtmlList('id', 'authors_name', 'books', '2');
     }
 ```
 
