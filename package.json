@@ -1,6 +1,6 @@
 {
   "name": "pdatastore",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "PDataStore retrieves data from a data-source in html, saves the data into memory and provides quick access to this data. You can therefore also convert stored data to certain HTMLElements e.g HTMLSelectElement options",
   "main": "lib/pdatastore.js",
   "scripts": {
