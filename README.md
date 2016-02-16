@@ -92,7 +92,7 @@ function Books(){
     <option value="23">Mobile Devices</option>
     <option value="24">Beverages</option>
     <option value="25">Beer</option>
-    <option value="26"><Detergent/option>
+    <option value="26">Detergent</option>
 </select>
     
 <select name='products'></select>
@@ -107,13 +107,13 @@ if(category!==null && category!==undefined){
     category.addEventListener('change', function(){
         var value = this.options[this.selectedIndex].value;
         pStore.findDataByKeyValue('product_category_id', value, 'data-source-products')
-            .toHtmlList('id', 'product_name', 'product_cat', '14');
+            .toHtmlList('id', 'product_name', 'products', '14');
     });
     
 //JQuery Developers
 $('input[name=product_cat]').change(function(){
     pStore.findDataByKeyValue('product_category_id', $(this).va(), 'data-source-products')
-            .toHtmlList('id', 'product_name', 'product_cat', '14');
+            .toHtmlList('id', 'product_name', 'products', '14');
 });
 }
 ```
