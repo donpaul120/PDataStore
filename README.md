@@ -9,14 +9,13 @@ You can therefore also convert stored data to certain HTMLElements e.g HTMLSelec
 PDataStore will search for an element with the id "p-store"
 This div should hold all data-sources as an attribute.
 
-```html 
-    <div id="p-store"></div>
+```html
+<div id="p-store"></div>
 ```
 
 Inject data-sources to the store like this:
-
 ```html
-    div id="p-store" data-books='[{"id":"1", "book_name":"PDataStore Book"},{}]'></div>
+<div id="p-store" data-books='[{"id":"1", "book_name":"PDataStore Book"},{}]'></div>
 ```
 
 An Example Using PHP(Laravel) and Blade Template:
