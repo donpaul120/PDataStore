@@ -19,12 +19,19 @@ This div should hold all data-sources as an attribute.
 
 Inject data-sources to the store like this:
 ```html
-<div id="p-store" data-books='[{"id":"1", "book_name":"PDataStore Book"},{}]'></div>
+<div id="p-store" data-books='[{
+        "id":"1", 
+        "book_name":"PDataStore Book", 
+        "author_name":"Paul"
+     }]'>
+</div>
 ```
+Note:: PDataStore loads data from its sources, saves it into memory and removes loaded data-sources from the p-store.
 
 ```html
 <!--Inject the data: blade templates-->
-<div id=p-store data-source-books='{{$books}}' data-book-route='{{$book_source_url}}'></div>
+<div id=p-store data-source-books='{{$books}}' 
+                data-book-route='{{$book_source_url}}'></div>
 ```
 
 ### Retrieving and Manipulating Data
@@ -33,6 +40,7 @@ We will use PDataStore to load the list of books to a HTMLSelectElement
 ```javascript
 var PDataStore = require('pdatastore');
 function Books(){
+    var PDataStore = require('pdatastore');
     var pStore = new PDataStore();
     //so we are looking for all books in data-source-books 
     //whose authors name is equals paul
@@ -59,6 +67,45 @@ function Books(){
     var pStore = new PDataStore(true);
 }
 ```
+
+## More Examples
+
+```html
+<div id="p-store" data-source-products='[
+    {'id':1,'product_category_id':23, 'product_name':'Samsung S6'},
+    {'id':16,'product_category_id':24, 'product_name':'Bournvita'},
+    {'id':14,'product_category_id':23, 'product_name':'Blackberry'},
+    {'id':4,'product_category_id':25, 'product_name':'Origin'}
+    ]'>
+</div>
+    
+<!--form-->
+<select name='product_cat'>
+    <option value="23">Mobile Devices</option>
+    <option value="24">Beverages</option>
+    <option value="25">Beer</option>
+    <option value="26"><Detergent/option>
+</select>
+    
+<select name='products'></select>
+```
+
+```javascript
+var PDataStore = require('pdatastore');
+var pStore = new PDataStore(true);
+    
+var category = document.getElementsByName('product_cat')[0];
+if(category!==null && category!==undefined){
+    category.addEventListener('change', function(){
+        var value = this.options[this.selectedIndex].value;
+        pStore.findDataByKeyValue('product_category_id', value, 'data-source-products')
+            .toHtmlList('id', 'product_name', 'product_cat', '14');
+    });
+}
+```
+
+#### Next Example
+Try it Out.
 
 
 
